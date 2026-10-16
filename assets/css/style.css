@@ -1,0 +1,51 @@
+/* Temel kaydırma davranışı */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Profil fotoğrafı için hafif bir nabız animasyonu */
+.profile-img-container {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Kartların üzerine gelince içindeki ikonların hafif parlaması */
+#skills div:hover i {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+#skills div i {
+    transition: transform 0.3s ease;
+}
+
+/* Scrollbar Özelleştirmesi (Karanlık tema uyumlu) */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #111827;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #374151;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3b82f6;
+}
