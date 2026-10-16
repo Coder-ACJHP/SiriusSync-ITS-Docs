@@ -4,193 +4,29 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Support — SiriusSync ITS</title>
-  <style>
-    :root {
-      color-scheme: light dark;
-      --text: #1a1a1a;
-      --muted: #555;
-      --border: #d8d8dc;
-      --link: #0b57d0;
-      --bg-page: #f5f5f7;
-      --surface: #ffffff;
-      --shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --text: #eee;
-        --muted: #aaa;
-        --border: #3a3a3c;
-        --link: #8ab4f8;
-        --bg-page: #000000;
-        --surface: #1c1c1e;
-        --shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
-      }
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      line-height: 1.55;
-      max-width: 42rem;
-      margin: 0 auto;
-      padding: 1.25rem 1.5rem 3rem;
-      color: var(--text);
-      background-color: var(--bg-page);
-    }
-
-    h1 {
-      font-size: 1.65rem;
-      margin-bottom: 0.35rem;
-    }
-
-    h2 {
-      font-size: 1.15rem;
-      margin-top: 1.75rem;
-    }
-
-    p,
-    li {
-      font-size: 0.95rem;
-    }
-
-    .muted {
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    a {
-      color: var(--link);
-    }
-
-    hr {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 2rem 0;
-    }
-
-    ul {
-      padding-left: 1.25rem;
-    }
-
-    .support-panel {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 2rem 1.75rem;
-      box-shadow: var(--shadow);
-      text-align: center;
-    }
-
-    .app-icon {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 1.25rem;
-      border-radius: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.25rem;
-      line-height: 1;
-      background: linear-gradient(145deg, #3a3a3c, #1c1c1e);
-      color: #fff;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
-
-    @media (prefers-color-scheme: dark) {
-      .app-icon {
-        background: linear-gradient(145deg, #48484a, #2c2c2e);
-        color: #f2f2f7;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-      }
-    }
-
-    .app-subtitle {
-      display: block;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--link);
-      margin-bottom: 0.35rem;
-    }
-
-    .support-panel h1 {
-      margin-top: 0;
-      margin-bottom: 0.5rem;
-    }
-
-    .support-panel .lead {
-      text-align: left;
-      color: var(--text);
-      margin-bottom: 1.5rem;
-    }
-
-    .contact-box {
-      background: var(--bg-page);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.25rem;
-      text-align: center;
-    }
-
-    .contact-label {
-      display: block;
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 0.5rem;
-      font-weight: 500;
-    }
-
-    .email-link {
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--link);
-      text-decoration: none;
-    }
-
-    .email-link:hover {
-      text-decoration: underline;
-    }
-
-    .footer-note {
-      margin-top: 1.25rem;
-      margin-bottom: 0;
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-
-    .doc-footer {
-      margin-top: 1.5rem;
-      text-align: center;
-    }
-  </style>
+  <link rel="stylesheet" href="../../assets/css/style.css" />
 </head>
 
-<body>
+<body class="doc-page">
 
   <div class="support-panel">
-    <div class="app-icon">&#128230;</div>
+    <div class="app-icon">
+      <img src="../../assets/images/siriussyncAppIcon.png" alt="SiriusSync ITS" />
+    </div>
     <span class="app-subtitle">SiriusSync ITS Official Support</span>
     <h1>SiriusSync ITS</h1>
     <p class="lead">
       Welcome to the official support hub for <strong>SiriusSync ITS</strong>, the enterprise desktop ERP and inventory
-      management system engineered by <strong>Bilal Khalid Mohammed Ameen (Coder ACJHP)</strong>. SiriusSync ITS
+      management system engineered by <strong>Onur Işık (Coder ACJHP)</strong>. SiriusSync ITS
       provides real-time multi-client inventory synchronization, unified CRM contact management, full Sales and Purchase
       Order Management (SOM/POM) lifecycles, cost sheet calculations, and multi-item receipt processing powered by Java
       21 and Supabase cloud infrastructure.
     </p>
     <div class="contact-box">
-      <p style="margin: 0.6rem 0 0; font-size: 0.85rem;" class="muted">
+      <p class="muted">
         Developer / Engineering: <a href="mailto:hexa.octabin@outlook.com">hexa.octabin@outlook.com</a>
       </p>
     </div>
-    <p style="margin-top: 1.25rem; margin-bottom: 0;">
-      <a href="https://coderacjhp.pages.dev/projects/siriussync/" target="_blank" rel="noopener noreferrer"
-        class="email-link" style="font-size: 0.95rem;">
-        &rarr; Visit Official Web Portal (siriussyncits.carrd.co)
-      </a>
-    </p>
     <p class="footer-note">Responses are typically provided within 24&ndash;48 hours.</p>
   </div>
 
