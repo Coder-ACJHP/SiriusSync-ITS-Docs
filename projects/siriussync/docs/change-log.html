@@ -6,7 +6,7 @@
   <title>SiriusSync ITS — Sürüm Notları</title>
   <style>
     :root {
-      --bg: #1e1e2e;
+      --bg: #1f6feb;
       --card-bg: #28283d;
       --border: #3b3b54;
       --text: #e5e7eb;
@@ -229,20 +229,9 @@
   }
 
   // 2. Maven'dan Otomatik Versiyon Çekme:
-  // - URL üzerinden gelen versiyon (?v=1.5.2 veya ?version=1.5.2)
-  // - Ya da yerel/uzak pom.xml dosyasından dinamik çözümleme
+  // - Yerel veya uzak pom.xml dosyasından dinamik sürüm çözümleme
   async function syncMavenVersion() {
     const versionElements = document.querySelectorAll('.maven-version');
-    
-    // URL parametresinden versiyon kontrolü
-    const urlVersion = params.get('v') || params.get('version');
-    if (urlVersion) {
-      const formatted = urlVersion.startsWith('v') ? urlVersion : ('v' + urlVersion);
-      versionElements.forEach(el => el.textContent = formatted);
-      return;
-    }
-
-    // pom.xml yolları (geliştirme ve sunucu ortamları)
     const pomPaths = [
       '../../SiriusSync-ITS/pom.xml',
       '../pom.xml',
@@ -260,6 +249,7 @@
             const v = match[1].trim();
             const formatted = v.startsWith('v') ? v : ('v' + v);
             versionElements.forEach(el => el.textContent = formatted);
+            document.title = 'SiriusSync ITS — Sürüm Notları (' + formatted + ')';
             break;
           }
         }
