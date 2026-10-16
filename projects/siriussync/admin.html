@@ -46,12 +46,28 @@
         <div class="bg-white rounded-lg shadow-xl p-6 w-full max-w-md">
             <h2 class="text-xl font-bold mb-4" id="modalTitle">Modülleri Düzenle</h2>
             <input type="hidden" id="modalHwid">
-            <div id="modulesList" class="grid grid-cols-2 gap-3 mb-6">
-                <!-- Modül Checkboxları JS ile buraya dolacak -->
-            </div>
+            <div id="modulesList" class="grid grid-cols-2 gap-3 mb-6"></div>
             <div class="flex justify-end gap-2">
                 <button onclick="closeModal('moduleModal')" class="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400">İptal</button>
                 <button onclick="saveModules()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Kaydet</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bilgi Düzenleme Modalı (YENİ) -->
+    <div id="editInfoModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-lg shadow-xl p-6 w-full max-w-md">
+            <h2 class="text-xl font-bold mb-4">Cihaz Bilgilerini Düzenle</h2>
+            <input type="hidden" id="editHwid">
+            <div class="space-y-3 mb-6">
+                <label class="block text-sm font-medium text-gray-700">Şirket Adı</label>
+                <input type="text" id="editCompany" class="w-full border p-2 rounded">
+                <label class="block text-sm font-medium text-gray-700 mt-2">Kullanıcı / Cihaz Adı</label>
+                <input type="text" id="editOwner" class="w-full border p-2 rounded">
+            </div>
+            <div class="flex justify-end gap-2">
+                <button onclick="closeModal('editInfoModal')" class="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400">İptal</button>
+                <button onclick="saveDeviceInfo()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Güncelle</button>
             </div>
         </div>
     </div>
@@ -75,7 +91,7 @@
     <script>
         const API_BASE = "https://siriussync-auth.coderacjhp.workers.dev";
         const ALL_MODULES = ["products", "costsheets", "categories", "crm", "exchange_rate", "som", "pom", "datatransfer", "barcode", "receipts", "movements", "users", "notifications"];
-        const STD_MODULES = ["products", "costsheets", "categories", "crm", "exchange_rate"]; // Standart modüller
+        const STD_MODULES = ["products", "costsheets", "categories", "crm", "exchange_rate"];
         let licensesData = [];
 
         window.onload = () => {
@@ -138,25 +154,24 @@
                 card.className = "bg-white rounded-lg shadow overflow-hidden";
                 
                 let devicesHTML = devices.map(d => {
-                    // Ana listede (std) yazısını modül isimlerinin yanına ekliyoruz
                     const displayModules = d.modules.map(m => STD_MODULES.includes(m) ? `${m} <span class="text-gray-400">(std)</span>` : m).join(', ');
                     
                     return `
-                    <div class="flex flex-col md:flex-row items-center justify-between p-4 border-b last:border-0 hover:bg-gray-50">
+                    <div class="flex flex-col md:flex-row items-center justify-between p-4 border-b last:border-0 hover:bg-gray-50 group">
                         <div class="flex-1 mb-3 md:mb-0">
-                            <p class="font-bold text-gray-800">${d.ownerName} <span class="text-xs text-gray-500 font-normal">(${d.deviceName || 'Cihaz Adı Yok'})</span></p>
+                            <p class="font-bold text-gray-800 flex items-center gap-2">
+                                ${d.ownerName} <span class="text-xs text-gray-500 font-normal">(${d.deviceName || 'Cihaz Adı Yok'})</span>
+                                <button onclick="openEditModal('${d.hwid}')" class="text-gray-400 hover:text-blue-600 transition" title="Düzenle">✏️</button>
+                            </p>
                             <p class="text-xs text-gray-500 font-mono mt-1">${d.hwid}</p>
                             <p class="text-xs mt-1 text-blue-600">${displayModules}</p>
                         </div>
                         <div class="flex items-center gap-3">
-                            
-                            <!-- Toggle Button Tasarımı -->
                             <label class="inline-flex items-center cursor-pointer">
                                 <input type="checkbox" class="sr-only peer" ${d.isActive ? 'checked' : ''} onchange="toggleStatus('${d.hwid}', ${!d.isActive})">
                                 <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-500"></div>
                                 <span class="ms-2 text-sm font-medium ${d.isActive ? 'text-green-600' : 'text-gray-500'}">${d.isActive ? 'Aktif' : 'Pasif'}</span>
                             </label>
-
                             <button onclick="openModuleModal('${d.hwid}')" class="bg-blue-100 text-blue-700 px-3 py-1 rounded text-sm font-medium hover:bg-blue-200 transition">Modüller</button>
                             <button onclick="deleteHWID('${d.hwid}')" class="bg-gray-100 text-gray-600 px-3 py-1 rounded text-sm font-medium hover:bg-red-500 hover:text-white transition">Sil</button>
                         </div>
@@ -174,6 +189,39 @@
             }
         }
 
+        // Cihaz Bilgilerini Düzenleme (YENİ)
+        function openEditModal(hwid) {
+            const device = licensesData.find(d => d.hwid === hwid);
+            if(!device) return;
+
+            document.getElementById('editHwid').value = hwid;
+            document.getElementById('editCompany').value = device.companyName || '';
+            document.getElementById('editOwner').value = device.ownerName || '';
+            
+            document.getElementById('editInfoModal').classList.remove('hidden');
+        }
+
+        async function saveDeviceInfo() {
+            const hwid = document.getElementById('editHwid').value;
+            const companyName = document.getElementById('editCompany').value;
+            const ownerName = document.getElementById('editOwner').value;
+
+            if(!companyName || !ownerName) return showMessage("Şirket ve Kullanıcı adı boş bırakılamaz.", true);
+
+            try {
+                const res = await fetch(`${API_BASE}/admin/updateInfo`, {
+                    method: "POST", headers: getHeaders(),
+                    body: JSON.stringify({ hwid, companyName, ownerName })
+                });
+                const json = await res.json();
+                if(json.success) {
+                    closeModal('editInfoModal');
+                    fetchLicenses(); // Listeyi yenile (Cihaz yeni şirket klasörüne taşınacak)
+                } else showMessage(json.message, true);
+            } catch(e) { showMessage("Hata oluştu.", true); }
+        }
+
+        // Diğer İşlevler
         async function toggleStatus(hwid, newStatus) {
             try {
                 const res = await fetch(`${API_BASE}/admin/toggleStatus`, {
@@ -199,7 +247,6 @@
             } catch(e) { showMessage("Hata oluştu.", true); }
         }
 
-        // Modül İşlemleri
         function openModuleModal(hwid) {
             const device = licensesData.find(d => d.hwid === hwid);
             if(!device) return;
@@ -212,7 +259,6 @@
             
             ALL_MODULES.forEach(mod => {
                 const isChecked = device.modulesMap[mod] ? 'checked' : '';
-                // std dizisinin içindeyse (std) yazısını ekle
                 const displayMod = STD_MODULES.includes(mod) 
                     ? `<span class="font-medium">${mod} <span class="text-xs text-gray-400">(std)</span></span>` 
                     : mod;
@@ -232,7 +278,6 @@
             const hwid = document.getElementById('modalHwid').value;
             const checkboxes = document.querySelectorAll('.mod-checkbox');
             const newModulesMap = {};
-            
             checkboxes.forEach(cb => { newModulesMap[cb.value] = cb.checked; });
 
             try {
