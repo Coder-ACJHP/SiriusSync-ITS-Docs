@@ -1,223 +1,129 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SiriusSync ITS — Sürüm Notları</title>
-  <style>
-    :root {
-      --bg: #1f6feb;
-      --card-bg: #28283d;
-      --border: #3b3b54;
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --header-title: #ffffff;
-      --status-bg: rgba(5, 150, 105, 0.2);
-      --status-border: #059669;
-      --status-text: #34d399;
-    }
-    /* Açık tema desteği (?theme=light gönderilirse) */
-    body.light {
-      --bg: #f9fafb;
-      --card-bg: #ffffff;
-      --border: #e5e7eb;
-      --text: #1f2937;
-      --muted: #6b7280;
-      --header-title: #111827;
-      --status-bg: #ecfdf5;
-      --status-border: #10b981;
-      --status-text: #065f46;
-    }
-    body {
-      background-color: var(--bg);
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      margin: 0;
-      padding: 20px;
-      user-select: none; /* Metin seçilmesini engeller, masaüstü uygulaması hissi verir */
-      -webkit-user-select: none;
-    }
-    /* Şık ve ince Scrollbar */
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
-
-    .top-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--border);
-    }
-    .app-name {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--header-title);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .current-pill {
-      font-size: 11px;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 20px;
-      background: var(--status-bg);
-      border: 1px solid var(--status-border);
-      color: var(--status-text);
-      letter-spacing: 0.5px;
-    }
-
-    .release-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 18px;
-      margin-bottom: 16px;
-    }
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 10px;
-      margin-bottom: 14px;
-    }
-    .version-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .version { font-size: 18px; font-weight: 700; color: #fff; }
-    body.light .version { color: #111827; }
-    .date { font-size: 12px; color: var(--muted); }
-
-    .item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 11px; font-size: 13.5px; line-height: 1.5; }
-    .badge {
-      font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px;
-      color: white; min-width: 65px; text-align: center; flex-shrink: 0; margin-top: 2px;
-    }
-    .new { background-color: #059669; }
-    .imp { background-color: #2563eb; }
-    .fix { background-color: #d97706; }
-    .strong { font-weight: 600; color: var(--header-title); }
-  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: 'class' };
+  </script>
+  <link rel="stylesheet" href="../../../assets/css/style.css">
 </head>
-<body>
+<body class="bg-gray-50 text-gray-800 dark:bg-slate-900 dark:text-slate-200 font-sans p-5 select-none antialiased">
 
-<div class="top-bar">
-  <div class="app-name">
+<div class="flex justify-between items-center pb-3 mb-5 border-b border-gray-200 dark:border-slate-800">
+  <div class="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
     <span>📦 SiriusSync ITS</span>
   </div>
-  <div class="current-pill">
+  <div class="text-xs font-bold px-2.5 py-0.5 rounded-full tracking-wide bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">
     <span>GÜNCEL: </span><span class="maven-version">v1.5.2</span>
   </div>
 </div>
 
 <!-- Sürüm 1.5.2 (Develop / Güncel Sürüm) -->
-<div class="release-card">
-  <div class="header">
-    <div class="version-wrapper">
-      <span class="version maven-version">v1.5.2</span>
-      <span class="current-pill">EN YENİ</span>
+<div class="bg-white dark:bg-slate-800/80 border border-gray-200 dark:border-slate-700/60 rounded-xl p-5 mb-4 shadow-sm">
+  <div class="flex justify-between items-center pb-2.5 mb-3.5 border-b border-gray-100 dark:border-slate-700/60">
+    <div class="flex items-center gap-2.5">
+      <span class="text-lg font-bold text-gray-900 dark:text-white maven-version">v1.5.2</span>
+      <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full tracking-wide bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">EN YENİ</span>
     </div>
-    <span class="date">14 Ekim 2026</span>
+    <span class="text-xs text-gray-500 dark:text-slate-400">14 Ekim 2026</span>
   </div>
 
-  <div class="item">
-    <span class="badge new">YENİ</span>
-    <span><span class="strong">İrsaliye ve Mal Kabul Yazdırma Desteği:</span> Satış ve satın alma siparişleriniz için resmi Sevk İrsaliyesi ve Mal Giriş Belgelerini tek tıkla yazdırabilir veya PDF olarak kaydedebilirsiniz.</span>
+  <div class="flex items-start gap-2.5 mb-3 text-sm leading-relaxed">
+    <span class="text-[10px] font-bold px-2 py-0.5 rounded text-white bg-emerald-600 min-w-[70px] text-center shrink-0 mt-0.5">YENİ</span>
+    <span><strong class="font-semibold text-gray-900 dark:text-white">İrsaliye ve Mal Kabul Yazdırma Desteği:</strong> Satış ve satın alma siparişleriniz için resmi Sevk İrsaliyesi ve Mal Giriş Belgelerini tek tıkla yazdırabilir veya PDF olarak kaydedebilirsiniz.</span>
   </div>
 
-  <div class="item">
-    <span class="badge new">YENİ</span>
-    <span><span class="strong">Form Doğrulama ve Bilgi İpuçları:</span> Kart ve kayıt formlarında doldurulması zorunlu alanlar belirginleştirildi; eksik bilgi kalması durumunda kaydet butonu sizi doğrudan bilgilendirir.</span>
+  <div class="flex items-start gap-2.5 mb-3 text-sm leading-relaxed">
+    <span class="text-[10px] font-bold px-2 py-0.5 rounded text-white bg-emerald-600 min-w-[70px] text-center shrink-0 mt-0.5">YENİ</span>
+    <span><strong class="font-semibold text-gray-900 dark:text-white">Form Doğrulama ve Bilgi İpuçları:</strong> Kart ve kayıt formlarında doldurulması zorunlu alanlar belirginleştirildi; eksik bilgi kalması durumunda kaydet butonu sizi doğrudan bilgilendirir.</span>
   </div>
 
-  <div class="item">
-    <span class="badge new">YENİ</span>
-    <span><span class="strong">Akıllı Stok Bildirimi Yönlendirmesi:</span> Azalan stok uyarısına tıkladığınızda doğrudan ilgili ürün kartına giderek stok durumunu inceleyebilir ve bildirimi kapatabilirsiniz.</span>
+  <div class="flex items-start gap-2.5 mb-3 text-sm leading-relaxed">
+    <span class="text-[10px] font-bold px-2 py-0.5 rounded text-white bg-emerald-600 min-w-[70px] text-center shrink-0 mt-0.5">YENİ</span>
+    <span><strong class="font-semibold text-gray-900 dark:text-white">Akıllı Stok Bildirimi Yönlendirmesi:</strong> Azalan stok uyarısına tıkladığınızda doğrudan ilgili ürün kartına giderek stok durumunu inceleyebilir ve bildirimi kapatabilirsiniz.</span>
   </div>
 
-  <div class="item">
-    <span class="badge new">YENİ</span>
-    <span><span class="strong">Beni Hatırla ve Kolay Giriş:</span> Giriş ekranına "Beni Hatırla" seçeneği eklendi; hatalı girişlerde ekranda açıklayıcı Türkçe uyarılar ve işlem anında yükleniyor animasyonu gösterilir.</span>
+  <div class="flex items-start gap-2.5 mb-3 text-sm leading-relaxed">
+    <span class="text-[10px] font-bold px-2 py-0.5 rounded text-white bg-emerald-600 min-w-[70px] text-center shrink-0 mt-0.5">YENİ</span>
+    <span><strong class="font-semibold text-gray-900 dark:text-white">Beni Hatırla ve Kolay Giriş:</strong> Giriş ekranına "Beni Hatırla" seçeneği eklendi; hatalı girişlerde ekranda açıklayıcı Türkçe uyarılar ve işlem anında yükleniyor animasyonu gösterilir.</span>
   </div>
 
-  <div class="item">
-    <span class="badge new">YENİ</span>
-    <span><span class="strong">Uygulama İçi Sürüm Notları Ekranı:</span> Yardım menüsüne eklenen yeni seçenekle tüm güncellemeleri ve yenilikleri doğrudan uygulama içinden takip edebilirsiniz.</span>
+  <div class="flex items-start gap-2.5 mb-3 text-sm leading-relaxed">
+    <span class="text-[10px] font-bold px-2 py-0.5 rounded text-white bg-emerald-600 min-w-[70px] text-center shrink-0 mt-0.5">YENİ</span>
+    <span><strong class="font-semibold text-gray-900 dark:text-white">Uygulama İçi Sürüm Notları Ekranı:</strong> Yardım menüsüne eklenen yeni seçenekle tüm güncellemeleri ve yenilikleri doğrudan uygulama içinden takip edebilirsiniz.</span>
   </div>
 
-  <div class="item">
-    <span class="badge new">YENİ</span>
-    <span><span class="strong">Kullanıcı Şifre Yenileme Aracı:</span> Destek ve Yardım alanı üzerinden yetkili kullanıcıların kendi şifrelerini kolayca güncelleyebileceği araç sunuldu.</span>
+  <div class="flex items-start gap-2.5 mb-3 text-sm leading-relaxed">
+    <span class="text-[10px] font-bold px-2 py-0.5 rounded text-white bg-emerald-600 min-w-[70px] text-center shrink-0 mt-0.5">YENİ</span>
+    <span><strong class="font-semibold text-gray-900 dark:text-white">Kullanıcı Şifre Yenileme Aracı:</strong> Destek ve Yardım alanı üzerinden yetkili kullanıcıların kendi şifrelerini kolayca güncelleyebileceği araç sunuldu.</span>
   </div>
 
-  <div class="item">
-    <span class="badge imp">İYİLEŞTİRME</span>
-    <span><span class="strong">Müşteri ve Tedarikçi (CRM) Tablosu:</span> İletişim listesine yeni bilgi sütunları eklendi; istediğiniz sütunları açıp kapatabilir ve geniş tablolarda rahatça yatay kaydırma yapabilirsiniz.</span>
+  <div class="flex items-start gap-2.5 mb-3 text-sm leading-relaxed">
+    <span class="text-[10px] font-bold px-2 py-0.5 rounded text-white bg-blue-600 min-w-[70px] text-center shrink-0 mt-0.5">İYİLEŞTİRME</span>
+    <span><strong class="font-semibold text-gray-900 dark:text-white">Müşteri ve Tedarikçi (CRM) Tablosu:</strong> İletişim listesine yeni bilgi sütunları eklendi; istediğiniz sütunları açıp kapatabilir ve geniş tablolarda rahatça yatay kaydırma yapabilirsiniz.</span>
   </div>
 
-  <div class="item">
-    <span class="badge imp">İYİLEŞTİRME</span>
-    <span><span class="strong">Anlık Eşzamanlı Veri Paylaşımı:</span> Şirket bilgileri ve ürün kategorilerinde yapılan düzenlemeler sisteme bağlı diğer tüm kullanıcıların ekranına anında ve otomatik aktarılır.</span>
+  <div class="flex items-start gap-2.5 mb-3 text-sm leading-relaxed">
+    <span class="text-[10px] font-bold px-2 py-0.5 rounded text-white bg-blue-600 min-w-[70px] text-center shrink-0 mt-0.5">İYİLEŞTİRME</span>
+    <span><strong class="font-semibold text-gray-900 dark:text-white">Anlık Eşzamanlı Veri Paylaşımı:</strong> Şirket bilgileri ve ürün kategorilerinde yapılan düzenlemeler sisteme bağlı diğer tüm kullanıcıların ekranına anında ve otomatik aktarılır.</span>
   </div>
 
-  <div class="item">
-    <span class="badge imp">İYİLEŞTİRME</span>
-    <span><span class="strong">Esnek Fiş Oluşturma:</span> Alış ve satış fişlerinde belge görseli yükleme zorunluluğu esnetildi; görselsiz fişler de hızlıca kaydedilebilir.</span>
+  <div class="flex items-start gap-2.5 mb-3 text-sm leading-relaxed">
+    <span class="text-[10px] font-bold px-2 py-0.5 rounded text-white bg-blue-600 min-w-[70px] text-center shrink-0 mt-0.5">İYİLEŞTİRME</span>
+    <span><strong class="font-semibold text-gray-900 dark:text-white">Esnek Fiş Oluşturma:</strong> Alış ve satış fişlerinde belge görseli yükleme zorunluluğu esnetildi; görselsiz fişler de hızlıca kaydedilebilir.</span>
   </div>
 
-  <div class="item">
-    <span class="badge fix">DÜZELTME</span>
-    <span><span class="strong">İrsaliye ve Belge Kodları:</span> Yazdırılan irsaliye ve teslimat belgelerinde ürün kodları ile adlarının eksiksiz ve hatasız çıkması sağlandı.</span>
+  <div class="flex items-start gap-2.5 mb-3 text-sm leading-relaxed">
+    <span class="text-[10px] font-bold px-2 py-0.5 rounded text-white bg-amber-600 min-w-[70px] text-center shrink-0 mt-0.5">DÜZELTME</span>
+    <span><strong class="font-semibold text-gray-900 dark:text-white">İrsaliye ve Belge Kodları:</strong> Yazdırılan irsaliye ve teslimat belgelerinde ürün kodları ile adlarının eksiksiz ve hatasız çıkması sağlandı.</span>
   </div>
 
-  <div class="item">
-    <span class="badge fix">DÜZELTME</span>
-    <span><span class="strong">Kategori Senkronizasyonu:</span> Çoklu kullanıcı ortamında yeni eklenen kategorilerin diğer ekranlarda gecikmeli görünmesi sorunu tamamen giderildi.</span>
+  <div class="flex items-start gap-2.5 text-sm leading-relaxed">
+    <span class="text-[10px] font-bold px-2 py-0.5 rounded text-white bg-amber-600 min-w-[70px] text-center shrink-0 mt-0.5">DÜZELTME</span>
+    <span><strong class="font-semibold text-gray-900 dark:text-white">Kategori Senkronizasyonu:</strong> Çoklu kullanıcı ortamında yeni eklenen kategorilerin diğer ekranlarda gecikmeli görünmesi sorunu tamamen giderildi.</span>
   </div>
 </div>
 
 <!-- Sürüm 1.5.1 -->
-<div class="release-card">
-  <div class="header">
-    <span class="version">v1.5.1</span>
-    <span class="date">Ekim 2026</span>
+<div class="bg-white dark:bg-slate-800/80 border border-gray-200 dark:border-slate-700/60 rounded-xl p-5 mb-4 shadow-sm">
+  <div class="flex justify-between items-center pb-2.5 mb-3.5 border-b border-gray-100 dark:border-slate-700/60">
+    <span class="text-lg font-bold text-gray-900 dark:text-white">v1.5.1</span>
+    <span class="text-xs text-gray-500 dark:text-slate-400">Ekim 2026</span>
   </div>
-  <div class="item">
-    <span class="badge new">YENİ</span>
-    <span><span class="strong">Tablo Seçenekleri Menüsü:</span> Ürün, fiş ve maliyet tablolarında sütunları dilediğiniz gibi özelleştirebileceğiniz seçenekler menüsü eklendi.</span>
+  <div class="flex items-start gap-2.5 mb-3 text-sm leading-relaxed">
+    <span class="text-[10px] font-bold px-2 py-0.5 rounded text-white bg-emerald-600 min-w-[70px] text-center shrink-0 mt-0.5">YENİ</span>
+    <span><strong class="font-semibold text-gray-900 dark:text-white">Tablo Seçenekleri Menüsü:</strong> Ürün, fiş ve maliyet tablolarında sütunları dilediğiniz gibi özelleştirebileceğiniz seçenekler menüsü eklendi.</span>
   </div>
-  <div class="item">
-    <span class="badge imp">İYİLEŞTİRME</span>
-    <span><span class="strong">Genişletilmiş Belge Görüntüleyici:</span> Rapor ve belge önizleme pencereleri varsayılan olarak geniş ekranda açılarak daha ferah bir kullanım sağlandı.</span>
+  <div class="flex items-start gap-2.5 mb-3 text-sm leading-relaxed">
+    <span class="text-[10px] font-bold px-2 py-0.5 rounded text-white bg-blue-600 min-w-[70px] text-center shrink-0 mt-0.5">İYİLEŞTİRME</span>
+    <span><strong class="font-semibold text-gray-900 dark:text-white">Genişletilmiş Belge Görüntüleyici:</strong> Rapor ve belge önizleme pencereleri varsayılan olarak geniş ekranda açılarak daha ferah bir kullanım sağlandı.</span>
   </div>
-  <div class="item">
-    <span class="badge fix">DÜZELTME</span>
-    <span><span class="strong">Stok Eksiye Düşme Koruması:</span> Fiş ve sipariş oluştururken depodaki mevcut stok miktarından fazlasının çıkış yapılması önlendi.</span>
+  <div class="flex items-start gap-2.5 text-sm leading-relaxed">
+    <span class="text-[10px] font-bold px-2 py-0.5 rounded text-white bg-amber-600 min-w-[70px] text-center shrink-0 mt-0.5">DÜZELTME</span>
+    <span><strong class="font-semibold text-gray-900 dark:text-white">Stok Eksiye Düşme Koruması:</strong> Fiş ve sipariş oluştururken depodaki mevcut stok miktarından fazlasının çıkış yapılması önlendi.</span>
   </div>
 </div>
 
 <!-- Sürüm 1.5.0 -->
-<div class="release-card">
-  <div class="header">
-    <span class="version">v1.5.0</span>
-    <span class="date">Ekim 2026</span>
+<div class="bg-white dark:bg-slate-800/80 border border-gray-200 dark:border-slate-700/60 rounded-xl p-5 mb-4 shadow-sm">
+  <div class="flex justify-between items-center pb-2.5 mb-3.5 border-b border-gray-100 dark:border-slate-700/60">
+    <span class="text-lg font-bold text-gray-900 dark:text-white">v1.5.0</span>
+    <span class="text-xs text-gray-500 dark:text-slate-400">Ekim 2026</span>
   </div>
-  <div class="item">
-    <span class="badge new">YENİ</span>
-    <span><span class="strong">Sipariş Süreç Takibi (Satış & Satın Alma):</span> Siparişlerin teklif aşamasından teslimata kadar tüm adımlarını adım adım yönetebileceğiniz süreç sistemi devreye alındı.</span>
+  <div class="flex items-start gap-2.5 mb-3 text-sm leading-relaxed">
+    <span class="text-[10px] font-bold px-2 py-0.5 rounded text-white bg-emerald-600 min-w-[70px] text-center shrink-0 mt-0.5">YENİ</span>
+    <span><strong class="font-semibold text-gray-900 dark:text-white">Sipariş Süreç Takibi (Satış & Satın Alma):</strong> Siparişlerin teklif aşamasından teslimata kadar tüm adımlarını adım adım yönetebileceğiniz süreç sistemi devreye alındı.</span>
   </div>
-  <div class="item">
-    <span class="badge imp">İYİLEŞTİRME</span>
-    <span><span class="strong">Toplu Veri Aktarım Sihirbazı:</span> Excel üzerinden ürün ve maliyet kartlarının sisteme aktarımı hızlandırıldı.</span>
+  <div class="flex items-start gap-2.5 mb-3 text-sm leading-relaxed">
+    <span class="text-[10px] font-bold px-2 py-0.5 rounded text-white bg-blue-600 min-w-[70px] text-center shrink-0 mt-0.5">İYİLEŞTİRME</span>
+    <span><strong class="font-semibold text-gray-900 dark:text-white">Toplu Veri Aktarım Sihirbazı:</strong> Excel üzerinden ürün ve maliyet kartlarının sisteme aktarımı hızlandırıldı.</span>
   </div>
-  <div class="item">
-    <span class="badge fix">DÜZELTME</span>
-    <span><span class="strong">Arayüz Performansı:</span> Yoğun veri akışında sayfalar arası geçişlerde yaşanan bekleme süreleri minimize edildi.</span>
+  <div class="flex items-start gap-2.5 text-sm leading-relaxed">
+    <span class="text-[10px] font-bold px-2 py-0.5 rounded text-white bg-amber-600 min-w-[70px] text-center shrink-0 mt-0.5">DÜZELTME</span>
+    <span><strong class="font-semibold text-gray-900 dark:text-white">Arayüz Performansı:</strong> Yoğun veri akışında sayfalar arası geçişlerde yaşanan bekleme süreleri minimize edildi.</span>
   </div>
 </div>
 
@@ -225,7 +131,7 @@
   // 1. Tema Kontrolü: ?theme=light gelirse açık temaya geç
   const params = new URLSearchParams(window.location.search);
   if (params.get('theme') === 'light') {
-    document.body.classList.add('light');
+    document.documentElement.classList.remove('dark');
   }
 
   // 2. Maven'dan Otomatik Versiyon Çekme:
