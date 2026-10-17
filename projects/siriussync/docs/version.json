@@ -1,6 +1,6 @@
 {
-    "latest_version": "1.5.3",
+    "latest_version": "1.5.4",
     "mandatory": true,
     "download_url": "https://github.com/Coder-ACJHP/SiriusSync-ITS/releases/download/v1.5.3/SiriusSync.ITS-1.5.3.msi",
-    "changelog": "Performans iyileştirmeleri ve hata düzeltmeleri."
+    "changelog": "Login ekranı beni hatırla özelliği, kullanıcılar için profil kartından şifre yenileme, tüm modüller için gerekli alanlar kontrolü, şirket bilgileri senkronizasyon düzeltmesi ve performans iyileştirmeleri."
 }

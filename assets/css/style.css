@@ -55,26 +55,14 @@ html {
    ========================================================================== */
 
 .doc-page {
-  color-scheme: light dark;
-  --text: #1a1a1a;
-  --muted: #555;
-  --border: #d8d8dc;
-  --link: #0b57d0;
-  --bg-page: #f5f5f7;
-  --surface: #ffffff;
-  --shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
-}
-
-@media (prefers-color-scheme: dark) {
-  .doc-page {
-    --text: #eee;
-    --muted: #aaa;
-    --border: #3a3a3c;
-    --link: #8ab4f8;
-    --bg-page: #000000;
-    --surface: #1c1c1e;
-    --shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
-  }
+  color-scheme: dark;
+  --text: #f3f4f6;
+  --muted: #9ca3af;
+  --border: #374151;
+  --link: #60a5fa;
+  --bg-page: #111827;
+  --surface: #1f2937;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
 }
 
 body.doc-page {
@@ -84,9 +72,6 @@ body.doc-page {
   margin: 0 auto;
   padding: 1.25rem 1.5rem 3rem;
   color: var(--text);
-}
-
-body.doc-page:has(.support-panel) {
   background-color: var(--bg-page);
 }
 
